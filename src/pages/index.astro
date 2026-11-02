@@ -27,28 +27,14 @@ const portSignals = [
         aria-label="Don Ballenón — Inicio"
         class="inline-flex items-center gap-3.5 group min-h-[48px] px-2 py-1 rounded-xl"
       >
-        <span class="h-11 w-11 rounded-xl bg-[var(--bg-pacifico)] border-2 border-[var(--seam-strong)] flex items-center justify-center shrink-0 transition-transform group-hover:-rotate-3">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="26"
-            height="26"
-            viewBox="0 0 64 64"
-            fill="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M10 38C10 25 20 18 33 18C43 18 49 24 52 32C55 29 58 25 60 21C60 28 57 34 52 37C55 40 56 44 56 44C50 44 46 41 43 39C39 42 32 44 22 44C14 44 10 41 10 38Z"
-              fill="#0A2342"
-            />
-            <circle cx="21" cy="30" r="2.5" fill="#F5B800" />
-            <path
-              d="M12 50C17 47 22 52 27 49C32 46 37 52 42 49C47 46 52 51 56 49"
-              stroke="#C83E2B"
-              stroke-width="4"
-              stroke-linecap="round"
-            />
-          </svg>
-        </span>
+        <img
+          src="/images/logo-don-ballenon.jpg"
+          alt="Emblema oficial de la ballena de Don Ballenón"
+          width="48"
+          height="48"
+          loading="eager"
+          class="h-12 w-12 rounded-xl bg-white border-2 border-[var(--seam-strong)] object-contain p-0.5 shrink-0 transition-transform group-hover:-rotate-3"
+        />
         <div>
           <span class="block font-extrabold text-xl sm:text-2xl tracking-tight text-[var(--ink-navy)] leading-none" style="font-family: var(--font-display);">
             DON BALLENÓN
@@ -654,13 +640,23 @@ const portSignals = [
   <!-- FOOTER REAL CLOSE -->
   <footer class="bg-[var(--bg-sand-elevated)] text-[var(--ink-navy)] py-10 border-t-2 border-[var(--seam-strong)]">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
-      <div class="space-y-1">
-        <p class="font-extrabold text-lg text-[var(--ink-navy)]" style="font-family: var(--font-display);">
-          DON BALLENÓN · MARISQUERÍA Y TABERNA COSTERA
-        </p>
-        <p class="text-xs sm:text-sm text-[var(--ink-navy-muted)]">
-          {BRAND_INFO.address.full} · Tel. <a href={`tel:${BRAND_INFO.phone.raw}`} class="font-bold underline">{BRAND_INFO.phone.display}</a>
-        </p>
+      <div class="flex items-center gap-4">
+        <img
+          src="/images/logo-don-ballenon.jpg"
+          alt="Emblema de la ballena de Don Ballenón"
+          width="56"
+          height="56"
+          loading="lazy"
+          class="h-14 w-14 rounded-xl bg-white border-2 border-[var(--seam-strong)] object-contain p-1 shrink-0"
+        />
+        <div class="space-y-1">
+          <p class="font-extrabold text-lg text-[var(--ink-navy)]" style="font-family: var(--font-display);">
+            DON BALLENÓN · MARISQUERÍA Y TABERNA COSTERA
+          </p>
+          <p class="text-xs sm:text-sm text-[var(--ink-navy-muted)]">
+            {BRAND_INFO.address.full} · Tel. <a href={`tel:${BRAND_INFO.phone.raw}`} class="font-bold underline">{BRAND_INFO.phone.display}</a>
+          </p>
+        </div>
       </div>
 
       <div class="flex flex-wrap items-center gap-3">
