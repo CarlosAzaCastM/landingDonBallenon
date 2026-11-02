@@ -1,0 +1,144 @@
+@import "tailwindcss";
+
+:root {
+  /* Surface Tokens — Coastal "Al Fresco" & Cerveza Pacífico World (No beige/cream default) */
+  --bg-sand: #F4F7FA;
+  --bg-sand-elevated: #FFFFFF;
+  --bg-sand-deep: #E6EEF6;
+  --bg-pacifico: #F5B800;
+  --bg-pacifico-bright: #FFCC00;
+  --bg-pacifico-deep: #E0A800;
+  --bg-navy: #0A2342;
+  --bg-navy-elevated: #12345E;
+
+  /* Ink Tokens — Tinted from the coastal navy palette, never neutral gray */
+  --ink-navy: #0A2342;
+  --ink-navy-muted: #173A66;
+  --ink-on-navy: #F4F7FA;
+  --ink-on-navy-muted: #C2D8F0;
+
+  /* Accent Tokens */
+  --accent-red: #C83E2B;
+  --accent-red-dark: #9B2819;
+  --accent-ocean: #0E6BA8;
+  --accent-lime: #1E6B38;
+
+  /* Seam & Structural Border Tokens */
+  --seam-light: rgba(10, 35, 66, 0.18);
+  --seam-strong: #0A2342;
+  --seam-on-navy: rgba(194, 216, 240, 0.24);
+
+  /* Depth Tokens — Neutral elevation shadows (no colored glow) */
+  --shadow-coastal: 0 12px 28px -8px rgba(0, 0, 0, 0.12);
+  --shadow-coastal-lg: 0 20px 38px -12px rgba(0, 0, 0, 0.18);
+
+  /* Typography Tokens */
+  --font-display: 'Bricolage Grotesque', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Be Vietnam Pro', system-ui, -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+/* Browser Surfaces — Crafted Selection, Caret, Scrollbars, Focus, Numerals */
+::selection {
+  background-color: var(--bg-pacifico);
+  color: var(--ink-navy);
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-sand);
+  color: var(--ink-navy);
+  font-family: var(--font-sans);
+  caret-color: var(--accent-red);
+  scrollbar-color: var(--bg-navy) var(--bg-sand-deep);
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-sand-deep);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-navy);
+  border: 2px solid var(--bg-sand-deep);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-red);
+}
+
+body {
+  background-color: var(--bg-sand);
+  color: var(--ink-navy);
+  overflow-x: hidden;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Balanced headings & Typographic Discipline */
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  text-wrap: balance;
+  letter-spacing: -0.025em;
+  line-height: 1.08;
+}
+
+p,
+blockquote {
+  max-width: 60ch;
+  text-wrap: pretty;
+}
+
+a {
+  text-underline-offset: 0.24em;
+  text-decoration-thickness: 1.5px;
+}
+
+/* Accessible Keyboard Focus Ring */
+:focus-visible {
+  outline: 3px solid var(--accent-red);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+/* Tabular numerals for prices, coordinates, ratings & schedules */
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+  font-family: var(--font-mono);
+}
+
+/* Cartelera / Pacífico Label Frame Utility */
+.cartela-frame {
+  background-color: var(--bg-sand-elevated);
+  border: 2px solid var(--seam-strong);
+  box-shadow: var(--shadow-coastal);
+  border-radius: 16px;
+}
+
+.coastal-course-seam {
+  border-bottom: 2px solid var(--seam-strong);
+}
+
+/* Vibrant Cerveza Pacífico Sunlit Surface */
+.bg-pacifico-sun {
+  background-color: var(--bg-pacifico);
+  background-image: radial-gradient(circle at 82% 18%, var(--bg-pacifico-bright) 0%, var(--bg-pacifico) 58%, var(--bg-pacifico-deep) 100%);
+}
+
+/* Intentional Reduced Motion Alternative — Preserves state & hierarchy */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .motion-safe-transform {
+    transition: opacity 180ms ease-out, background-color 180ms ease-out, color 180ms ease-out, border-color 180ms ease-out !important;
+    transform: none !important;
+  }
+}

@@ -1,0 +1,694 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BlurTextHeading from '../components/reactbits/BlurTextHeading';
+import LivePortStatus from '../components/reactbits/LivePortStatus';
+import InteractiveMenuBoard from '../components/reactbits/InteractiveMenuBoard';
+import {
+  BRAND_INFO,
+  MENU_ITEMS,
+  LIVE_SESSIONS,
+  CUSTOMER_REVIEWS,
+} from '../data/donBallenon';
+
+const portSignals = [
+  'La Ballena Pacífico 940 ml al punto de nieve',
+  'Doraditos de Marlín pa’ chopear en consomé',
+  'La famosa Coquita Batanga escarchada',
+  'Salsa en vivo, norteño y DJ (Jue – Dom)',
+];
+---
+
+<BaseLayout>
+  <!-- Top Coastal Dispatch Header -->
+  <header class="sticky top-0 z-40 bg-[var(--bg-sand-elevated)] coastal-course-seam">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-[78px] py-3 flex items-center justify-between gap-4">
+      <a
+        href="#"
+        aria-label="Don Ballenón — Inicio"
+        class="inline-flex items-center gap-3.5 group min-h-[48px] px-2 py-1 rounded-xl"
+      >
+        <span class="h-11 w-11 rounded-xl bg-[var(--bg-pacifico)] border-2 border-[var(--seam-strong)] flex items-center justify-center shrink-0 transition-transform group-hover:-rotate-3">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="26"
+            height="26"
+            viewBox="0 0 64 64"
+            fill="none"
+            aria-hidden="true"
+          >
+            <path
+              d="M10 38C10 25 20 18 33 18C43 18 49 24 52 32C55 29 58 25 60 21C60 28 57 34 52 37C55 40 56 44 56 44C50 44 46 41 43 39C39 42 32 44 22 44C14 44 10 41 10 38Z"
+              fill="#0A2342"
+            />
+            <circle cx="21" cy="30" r="2.5" fill="#F5B800" />
+            <path
+              d="M12 50C17 47 22 52 27 49C32 46 37 52 42 49C47 46 52 51 56 49"
+              stroke="#C83E2B"
+              stroke-width="4"
+              stroke-linecap="round"
+            />
+          </svg>
+        </span>
+        <div>
+          <span class="block font-extrabold text-xl sm:text-2xl tracking-tight text-[var(--ink-navy)] leading-none" style="font-family: var(--font-display);">
+            DON BALLENÓN
+          </span>
+          <span class="block text-xs font-bold text-[var(--ink-navy-muted)] tabular-nums mt-1">
+            Av. Las Américas #206 · Ags
+          </span>
+        </div>
+      </a>
+
+      <nav aria-label="Navegación principal del puerto" class="hidden md:flex items-center gap-1.5 lg:gap-2">
+        <a
+          href="#ritual-costero"
+          class="min-h-[44px] px-4 py-2 rounded-lg font-bold text-sm text-[var(--ink-navy)] hover:bg-[var(--bg-pacifico)] inline-flex items-center transition-colors"
+        >
+          El Ritual
+        </a>
+        <a
+          href="#carta-del-puerto"
+          class="min-h-[44px] px-4 py-2 rounded-lg font-bold text-sm text-[var(--ink-navy)] hover:bg-[var(--bg-pacifico)] inline-flex items-center transition-colors"
+        >
+          Carta & Comanda
+        </a>
+        <a
+          href="#cartelera-musical"
+          class="min-h-[44px] px-4 py-2 rounded-lg font-bold text-sm text-[var(--ink-navy)] hover:bg-[var(--bg-pacifico)] inline-flex items-center transition-colors"
+        >
+          Música en Vivo
+        </a>
+        <a
+          href="#cronicas-clientes"
+          class="min-h-[44px] px-4 py-2 rounded-lg font-bold text-sm text-[var(--ink-navy)] hover:bg-[var(--bg-pacifico)] inline-flex items-center transition-colors"
+        >
+          Reseñas (4.8)
+        </a>
+        <a
+          href="#ubicacion-horarios"
+          class="min-h-[44px] px-4 py-2 rounded-lg font-bold text-sm text-[var(--ink-navy)] hover:bg-[var(--bg-pacifico)] inline-flex items-center transition-colors"
+        >
+          Ubicación
+        </a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a
+          href={BRAND_INFO.social.instagram}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="Instagram oficial @don_ballenon"
+          class="min-w-[44px] min-h-[44px] rounded-xl border-2 border-[var(--seam-strong)] bg-[var(--bg-sand-elevated)] hover:bg-[var(--bg-pacifico)] text-[var(--ink-navy)] inline-flex items-center justify-center transition-colors"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+          </svg>
+        </a>
+        <a
+          href={BRAND_INFO.social.googleMaps}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="min-h-[44px] px-4 py-2.5 rounded-xl bg-[var(--bg-pacifico)] hover:bg-[var(--bg-pacifico-bright)] text-[var(--ink-navy)] font-extrabold text-xs sm:text-sm border-2 border-[var(--seam-strong)] inline-flex items-center gap-2 transition-colors shadow-[var(--shadow-coastal)]"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"></path>
+            <circle cx="12" cy="10" r="3"></circle>
+          </svg>
+          <span>Cómo Llegar</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido-principal" class="flex-1">
+    <!-- COURSE 1: FIRST VIEWPORT — CARTELERA DE CERVECERÍA Y PUERTO AL FRESCO -->
+    <section class="bg-pacifico-sun coastal-course-seam py-12 sm:py-16 lg:py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+          <!-- Left 7 Cols: Direct Monumental Heading (no kicker above!), Offer, CTAs, and Live Port Status -->
+          <div class="lg:col-span-7 space-y-6">
+            <BlurTextHeading
+              client:load
+              text="La Ballena Pacífico bien muerta y el marisco más bravo en terraza al fresco."
+              highlightWords={['Ballena', 'Pacífico', 'fresco']}
+              className="text-4xl sm:text-5xl lg:text-[3.5rem] leading-[1.06]"
+            />
+
+            <p class="text-base sm:text-lg lg:text-xl font-medium text-[var(--ink-navy)] leading-relaxed">
+              Bienvenido al puerto de <strong>Av. Las Américas #206</strong> en Aguascalientes. Aquí venimos a chopear <strong>Doraditos de Marlín</strong> en su caldito de camarón, brindar con la legendaria <strong>Coquita Batanga</strong> y destapar Ballenas vestidas de escarcha con música en vivo.
+            </p>
+
+            <!-- Primary Action Row -->
+            <div class="flex flex-wrap items-center gap-4 pt-1">
+              <a
+                href="#carta-del-puerto"
+                class="min-h-[52px] px-6 py-3.5 rounded-xl bg-[var(--bg-navy)] hover:bg-[var(--bg-navy-elevated)] text-[var(--bg-pacifico)] font-extrabold text-sm sm:text-base border-2 border-[var(--seam-strong)] inline-flex items-center gap-2.5 shadow-[var(--shadow-coastal)] transition-colors"
+              >
+                <span>Ver Carta y Armar Ronda</span>
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </a>
+
+              <a
+                href={BRAND_INFO.social.googleMaps}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="min-h-[52px] px-6 py-3.5 rounded-xl bg-[var(--bg-sand-elevated)] hover:bg-[var(--bg-sand)] text-[var(--ink-navy)] font-extrabold text-sm sm:text-base border-2 border-[var(--seam-strong)] inline-flex items-center gap-2.5 shadow-[var(--shadow-coastal)] transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polygon points="3 6 9 3 15 6 21 3 21 18 15 21 9 18 3 21"></polygon>
+                  <line x1="9" x2="9" y1="3" y2="18"></line>
+                  <line x1="15" x2="15" y1="6" y2="21"></line>
+                </svg>
+                <span>Trazar Ruta en Google Maps</span>
+              </a>
+            </div>
+
+            <!-- Live Port Status Island -->
+            <div class="pt-2">
+              <LivePortStatus
+                client:load
+                mapsUrl={BRAND_INFO.social.googleMaps}
+                phoneRaw={BRAND_INFO.phone.raw}
+              />
+            </div>
+          </div>
+
+          <!-- Right 5 Cols: Cartela Cervecera Visual Composition (Flattened hierarchy, no nested card borders) -->
+          <div class="lg:col-span-5">
+            <div class="cartela-frame overflow-hidden">
+              <!-- Top Seal Bar -->
+              <div class="px-5 py-4 bg-[var(--bg-navy)] text-[var(--ink-on-navy)] flex flex-wrap items-center justify-between gap-2 border-b-2 border-[var(--seam-strong)]">
+                <span class="tabular-nums text-xs font-extrabold uppercase tracking-wider text-[var(--bg-pacifico)]">
+                  SELLO DE PUERTO · {BRAND_INFO.rating.score} / 5.0 ({BRAND_INFO.rating.count}+ OPINIONES)
+                </span>
+                <span class="tabular-nums text-xs font-bold text-[var(--ink-on-navy-muted)]">
+                  {BRAND_INFO.coordinates.display}
+                </span>
+              </div>
+
+              <!-- Main Plate Photo -->
+              <figure class="relative bg-[var(--bg-navy)] aspect-[4/3] border-b-2 border-[var(--seam-strong)]">
+                <img
+                  src="/images/tacos-doraditos.jpg"
+                  alt="Tacos doraditos de mariscos recién salidos de la plancha con limón verde recién exprimido en Don Ballenón"
+                  width="800"
+                  height="600"
+                  loading="eager"
+                  fetchpriority="high"
+                  class="w-full h-full object-cover"
+                />
+                <figcaption class="px-5 py-3 bg-[var(--bg-navy)] text-[var(--ink-on-navy)] text-xs sm:text-sm font-bold flex items-center justify-between gap-2">
+                  <span>Doraditos de Marlín "Pa’ Chopear"</span>
+                  <span class="tabular-nums text-[var(--bg-pacifico)] font-extrabold">$145 MXN</span>
+                </figcaption>
+              </figure>
+
+              <!-- Secondary Diptych Row divided by seam (no inner card borders) -->
+              <div class="grid grid-cols-2 divide-x-2 divide-[var(--seam-strong)] bg-[var(--bg-sand-elevated)]">
+                <figure>
+                  <img
+                    src="/images/cerveza-helada.jpg"
+                    alt="Tarro escarchado con Cerveza Pacífico bien helada y espuma espesa"
+                    width="400"
+                    height="280"
+                    loading="eager"
+                    class="w-full h-32 sm:h-36 object-cover border-b border-[var(--seam-light)]"
+                  />
+                  <figcaption class="p-3.5 text-[var(--ink-navy)] text-xs font-extrabold flex items-center justify-between gap-2">
+                    <span>La Ballena 940ml</span>
+                    <span class="tabular-nums">$115</span>
+                  </figcaption>
+                </figure>
+
+                <figure>
+                  <img
+                    src="/images/aguachile-puerto.jpg"
+                    alt="Ceviche y aguachile fresco de pescado y camarón con cebolla morada y toque cítrico"
+                    width="400"
+                    height="280"
+                    loading="eager"
+                    class="w-full h-32 sm:h-36 object-cover border-b border-[var(--seam-light)]"
+                  />
+                  <figcaption class="p-3.5 text-[var(--ink-navy)] text-xs font-extrabold flex items-center justify-between gap-2">
+                    <span>Ceviches & Barra Fría</span>
+                    <span class="tabular-nums">$180+</span>
+                  </figcaption>
+                </figure>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- STATIC MARITIME SIGNAL STRIP (Scannable at reader's own pace, no marquee loop) -->
+    <div
+      aria-label="Señales de identidad de Don Ballenón"
+      class="bg-[var(--bg-navy)] text-[var(--bg-pacifico)] coastal-course-seam py-4"
+    >
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+          {portSignals.map((signal) => (
+            <li class="flex items-center gap-2.5 py-1">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2.5"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                aria-hidden="true"
+                class="text-[var(--accent-red)] shrink-0"
+              >
+                <circle cx="12" cy="5" r="3" />
+                <line x1="12" x2="12" y1="22" y2="8" />
+                <path d="M5 12H2a10 10 0 0 0 20 0h-3" />
+              </svg>
+              <span class="text-xs sm:text-sm font-extrabold tracking-wide text-[var(--ink-on-navy)]">
+                {signal}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <!-- COURSE 2: EL RITUAL COSTERO — RANK BY INVERSION & HORIZONTAL LEDGER COURSES -->
+    <section id="ritual-costero" class="bg-[var(--bg-sand)] coastal-course-seam py-16 lg:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 border-2 border-[var(--seam-strong)] rounded-2xl overflow-hidden shadow-[var(--shadow-coastal-lg)]">
+          <!-- Left 5 Cols: Lead Inverted Panel in Deep Navy -->
+          <div class="lg:col-span-5 bg-[var(--bg-navy)] text-[var(--ink-on-navy)] p-7 sm:p-10 flex flex-col justify-between border-b-2 lg:border-b-0 lg:border-r-2 border-[var(--seam-strong)]">
+            <div class="space-y-4">
+              <h2 class="text-3xl sm:text-4xl font-extrabold text-[var(--bg-pacifico)]">
+                Tres leyes de nuestra terraza al fresco
+              </h2>
+              <p class="text-base text-[var(--ink-on-navy-muted)] leading-relaxed">
+                En Don Ballenón no hacemos mariscos de etiqueta formal. Nacimos para traer la frescura de las carretas del Pacífico y el ambiente festivo de cantina costera al corazón de Aguascalientes.
+              </p>
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-[var(--seam-on-navy)] space-y-2">
+              <p class="text-sm font-bold text-[var(--bg-pacifico)]">
+                El detalle de bienvenida que nos distingue:
+              </p>
+              <p class="text-sm text-[var(--ink-on-navy-muted)]">
+                En hora pico de fin de semana, nuestra recepción te recibe con una cortesía bien fría mientras preparan tu lugar.
+              </p>
+            </div>
+          </div>
+
+          <!-- Right 7 Cols: Stacked Horizontal Courses (No equal icon-card grid) -->
+          <div class="lg:col-span-7 bg-[var(--bg-sand-elevated)] divide-y-2 divide-[var(--seam-strong)]">
+            <article class="p-6 sm:p-8 flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+              <div class="space-y-2.5">
+                <h3 class="text-2xl font-extrabold text-[var(--ink-navy)]">
+                  La Ballena Pacífico a Punto de Congelación
+                </h3>
+                <p class="text-sm sm:text-base text-[var(--ink-navy-muted)]">
+                  Nuestra insignia amarilla: botellas familiares de Cerveza Pacífico reposadas en hielera con sal en grano para que lleguen a tu mesa sudando frío, listas para servirse en tarro escarchado o michelado.
+                </p>
+              </div>
+              <span class="tabular-nums text-xs font-extrabold uppercase px-3.5 py-1.5 rounded-lg bg-[var(--bg-pacifico)] text-[var(--ink-navy)] self-start shrink-0">
+                940 ml · Helada
+              </span>
+            </article>
+
+            <article class="p-6 sm:p-8 flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+              <div class="space-y-2.5">
+                <h3 class="text-2xl font-extrabold text-[var(--ink-navy)]">
+                  La Coquita Batanga & Cuchillo de Bar
+                </h3>
+                <p class="text-sm sm:text-base text-[var(--ink-navy-muted)]">
+                  El trago más aclamado por las más de 3,800 reseñas de nuestros clientes: tequila blanco, jugo de limón verde recién cortado, sal de mar en el borde y refresco de cola helado para cortar el picor del aguachile.
+                </p>
+              </div>
+              <span class="tabular-nums text-xs font-extrabold uppercase px-3.5 py-1.5 rounded-lg bg-[var(--bg-navy)] text-[var(--bg-pacifico)] self-start shrink-0">
+                Coctel Insignia
+              </span>
+            </article>
+
+            <article class="p-6 sm:p-8 flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+              <div class="space-y-2.5">
+                <h3 class="text-2xl font-extrabold text-[var(--ink-navy)]">
+                  Plancha Dorada y Caldito pa’ Chopear
+                </h3>
+                <p class="text-sm sm:text-base text-[var(--ink-navy-muted)]">
+                  Desde los Chiles Güeros del Barrio rellenos de queso crema, camarón y tocino hasta los Doraditos de Marlín que se sumergen en consomé caliente de camarón.
+                </p>
+              </div>
+              <span class="tabular-nums text-xs font-extrabold uppercase px-3.5 py-1.5 rounded-lg bg-[var(--bg-sand-deep)] text-[var(--ink-navy)] self-start shrink-0">
+                Cocina de Puerto
+              </span>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COURSE 3: INTERACTIVE MENU & TABLE ROUND SIMULATOR -->
+    <section id="carta-del-puerto" class="bg-[var(--bg-sand-deep)] coastal-course-seam py-16 lg:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div class="flex flex-col lg:flex-row lg:items-end justify-between gap-4 pb-6 border-b-2 border-[var(--seam-strong)]">
+          <div class="space-y-3">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--ink-navy)]">
+              Despacho de Cocina y Barra del Puerto
+            </h2>
+            <p class="text-base sm:text-lg text-[var(--ink-navy-muted)]">
+              Explora nuestras especialidades verificadas por tiempo de antojo y suma tus platillos favoritos para calcular la ronda de tu mesa al instante.
+            </p>
+          </div>
+
+          <div class="inline-flex items-center gap-2.5 px-4 py-3 rounded-xl bg-[var(--bg-sand-elevated)] border-2 border-[var(--seam-strong)] self-start lg:self-auto">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" class="text-[var(--accent-red)]">
+              <path d="M12 2v20"></path>
+              <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
+            </svg>
+            <span class="tabular-nums text-xs sm:text-sm font-extrabold text-[var(--ink-navy)]">
+              Precios transparentes · Ticket prom. {BRAND_INFO.rating.priceRange}
+            </span>
+          </div>
+        </div>
+
+        <InteractiveMenuBoard
+          client:visible
+          items={MENU_ITEMS}
+          whatsappBaseUrl={BRAND_INFO.phone.whatsappUrl}
+        />
+      </div>
+    </section>
+
+    <!-- COURSE 4: CARTELERA MUSICAL EN VIVO (VIBRANT PACÍFICO YELLOW FIELD) -->
+    <section id="cartelera-musical" class="bg-pacifico-sun coastal-course-seam py-16 lg:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-4">
+          <div class="space-y-3">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--ink-navy)]">
+              Cartelera de Tarima y Música en Vivo
+            </h2>
+            <p class="text-base sm:text-lg font-medium text-[var(--ink-navy)]">
+              En Don Ballenón la sobremesa se baila. De jueves a domingo encendemos la terraza con orquestas de salsa, grupos norteños en vivo y mezclas de DJ.
+            </p>
+          </div>
+
+          <a
+            href={BRAND_INFO.social.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="min-h-[48px] px-5 py-3 rounded-xl bg-[var(--bg-navy)] hover:bg-[var(--bg-navy-elevated)] text-[var(--bg-pacifico)] font-extrabold text-sm border-2 border-[var(--seam-strong)] inline-flex items-center gap-2.5 self-start md:self-auto transition-colors"
+          >
+            <span>Ver Cartelera Semanal en {BRAND_INFO.social.instagramHandle}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M7 7h10v10"></path>
+              <path d="M7 17 17 7"></path>
+            </svg>
+          </a>
+        </div>
+
+        <!-- Structured Schedule Board (No equal card grid, no inner bordered pills) -->
+        <div class="rounded-2xl border-2 border-[var(--seam-strong)] bg-[var(--bg-sand-elevated)] overflow-hidden shadow-[var(--shadow-coastal-lg)] divide-y-2 divide-[var(--seam-strong)]">
+          {LIVE_SESSIONS.map((session) => (
+            <article class="p-6 sm:p-8 grid grid-cols-1 md:grid-cols-12 gap-4 items-center hover:bg-[var(--bg-sand)] transition-colors">
+              <div class="md:col-span-3 space-y-1">
+                <h3 class="text-xl sm:text-2xl font-extrabold text-[var(--ink-navy)]">
+                  {session.day}
+                </h3>
+                <p class="tabular-nums text-xs font-extrabold text-[var(--ink-navy-muted)]">
+                  {session.hours}
+                </p>
+              </div>
+
+              <div class="md:col-span-5 space-y-1">
+                <p class="text-base sm:text-lg font-extrabold text-[var(--ink-navy)]">
+                  {session.genre}
+                </p>
+                <p class="text-sm text-[var(--ink-navy-muted)]">
+                  {session.atmosphere}
+                </p>
+              </div>
+
+              <div class="md:col-span-4 flex md:justify-end">
+                <span class="inline-flex items-center gap-2.5 px-4 py-2.5 rounded-xl bg-[var(--bg-pacifico)] text-[var(--ink-navy)] font-extrabold text-xs sm:text-sm">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M9 18V5l12-2v13"></path>
+                    <circle cx="6" cy="18" r="3"></circle>
+                    <circle cx="18" cy="16" r="3"></circle>
+                  </svg>
+                  <span>{session.highlightDrink}</span>
+                </span>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- COURSE 5: CRÓNICAS DEL MALECÓN — VERIFIED GOOGLE MAPS PROOF -->
+    <section id="cronicas-clientes" class="bg-[var(--bg-sand)] coastal-course-seam py-16 lg:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+          <!-- Left 4 Cols: Reputation Summary Plaque (Flattened inner structure, no nested cards) -->
+          <div class="lg:col-span-4 cartela-frame p-6 sm:p-8 space-y-5 bg-[var(--bg-sand-elevated)]">
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-[var(--ink-navy)]">
+              Lo que dice la flota en Google Maps
+            </h2>
+
+            <div class="py-4 border-y-2 border-[var(--seam-strong)] flex items-baseline justify-between">
+              <div>
+                <span class="tabular-nums text-4xl font-extrabold text-[var(--ink-navy)]">
+                  {BRAND_INFO.rating.score}
+                </span>
+                <span class="tabular-nums text-sm font-extrabold text-[var(--ink-navy-muted)] ml-1">
+                  / {BRAND_INFO.rating.max}
+                </span>
+              </div>
+              <span class="tabular-nums text-xs font-extrabold uppercase px-3 py-1.5 rounded-md bg-[var(--bg-pacifico)] text-[var(--ink-navy)]">
+                +{BRAND_INFO.rating.count} Reseñas
+              </span>
+            </div>
+
+            <p class="text-sm sm:text-base text-[var(--ink-navy-muted)]">
+              Somos uno de los puntos mejor calificados de toda la zona de Las Américas en Aguascalientes gracias a porciones generosas, atención rápida y precios justos.
+            </p>
+
+            <a
+              href={BRAND_INFO.social.googleMaps}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="w-full min-h-[48px] px-4 py-3 rounded-xl bg-[var(--bg-navy)] hover:bg-[var(--bg-navy-elevated)] text-[var(--bg-pacifico)] font-extrabold text-sm text-center inline-flex items-center justify-center gap-2 transition-colors"
+            >
+              <span>Ver Opiniones en Google Maps</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M7 7h10v10"></path>
+                <path d="M7 17 17 7"></path>
+              </svg>
+            </a>
+          </div>
+
+          <!-- Right 8 Cols: Stacked Editorial Review Ledger -->
+          <div class="lg:col-span-8 rounded-2xl border-2 border-[var(--seam-strong)] bg-[var(--bg-sand-elevated)] divide-y-2 divide-[var(--seam-strong)] shadow-[var(--shadow-coastal)]">
+            {CUSTOMER_REVIEWS.map((review) => (
+              <article class="p-6 sm:p-8 space-y-3">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <h3 class="text-lg sm:text-xl font-extrabold text-[var(--ink-navy)]">
+                    {review.author}
+                  </h3>
+                  <span class="tabular-nums text-xs font-extrabold px-3 py-1 rounded-md bg-[var(--bg-pacifico)] text-[var(--ink-navy)]">
+                    Calificación: {review.rating}
+                  </span>
+                </div>
+
+                <blockquote class="text-sm sm:text-base text-[var(--ink-navy)] leading-relaxed">
+                  “{review.comment}”
+                </blockquote>
+
+                <div class="pt-2 flex flex-wrap items-center justify-between gap-2 text-xs font-bold text-[var(--ink-navy-muted)]">
+                  <span>{review.visitContext} · {review.date}</span>
+                  <span class="text-[var(--ink-navy)] underline decoration-[var(--bg-pacifico)] decoration-2">
+                    Pidió: {review.favoriteOrder}
+                  </span>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- COURSE 6: BITÁCORA DE UBICACIÓN, HORARIOS Y CONTACTO DIRECTO -->
+    <section id="ubicacion-horarios" class="bg-[var(--bg-navy)] text-[var(--ink-on-navy)] coastal-course-seam py-16 lg:py-24">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
+          <!-- Left 6 Cols: Operational Details & Schedules -->
+          <div class="lg:col-span-6 space-y-6">
+            <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[var(--bg-pacifico)]">
+              Atraca hoy en Don Ballenón Américas
+            </h2>
+
+            <p class="text-base sm:text-lg text-[var(--ink-on-navy-muted)]">
+              Estamos sobre <strong>{BRAND_INFO.address.full}</strong>. Ven con tu grupo de amigos, en pareja o en familia a disfrutar de la terraza más fresca de Aguascalientes.
+            </p>
+
+            <!-- Address & Phone Ledger Box -->
+            <div class="rounded-2xl border-2 border-[var(--seam-on-navy)] bg-[var(--bg-navy-elevated)] divide-y divide-[var(--seam-on-navy)]">
+              <div class="p-6 flex items-start justify-between gap-4">
+                <div class="space-y-1.5">
+                  <h3 class="text-lg font-extrabold text-[var(--bg-pacifico)]">
+                    Dirección de la Terraza
+                  </h3>
+                  <p class="text-sm sm:text-base text-[var(--ink-on-navy)]">
+                    {BRAND_INFO.address.full}
+                  </p>
+                  <p class="tabular-nums text-xs text-[var(--ink-on-navy-muted)]">
+                    Coordenadas GPS: {BRAND_INFO.coordinates.display}
+                  </p>
+                </div>
+                <a
+                  href={BRAND_INFO.social.googleMaps}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="min-h-[44px] px-4 py-2.5 rounded-xl bg-[var(--bg-pacifico)] text-[var(--ink-navy)] font-extrabold text-xs sm:text-sm shrink-0 inline-flex items-center"
+                >
+                  Abrir GPS
+                </a>
+              </div>
+
+              <div class="p-6 space-y-3">
+                <h3 class="text-lg font-extrabold text-[var(--bg-pacifico)]">
+                  Horarios de Cocina y Barra
+                </h3>
+                <dl class="space-y-2.5">
+                  {BRAND_INFO.schedules.map((slot) => (
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1 text-sm">
+                      <dt class="font-bold text-[var(--ink-on-navy)]">{slot.days}</dt>
+                      <dd class="tabular-nums font-extrabold text-[var(--bg-pacifico)]">
+                        {slot.hours} <span class="text-xs font-normal text-[var(--ink-on-navy-muted)]">({slot.statusNote})</span>
+                      </dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+
+              <div class="p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div class="space-y-1">
+                  <h3 class="text-lg font-extrabold text-[var(--bg-pacifico)]">
+                    Atención Telefónica y Redes
+                  </h3>
+                  <p class="tabular-nums text-base font-extrabold text-[var(--ink-on-navy)]">
+                    {BRAND_INFO.phone.display}
+                  </p>
+                </div>
+                <div class="flex flex-wrap items-center gap-2.5">
+                  <a
+                    href={`tel:${BRAND_INFO.phone.raw}`}
+                    class="min-h-[44px] px-4 py-2.5 rounded-xl bg-[var(--bg-sand)] text-[var(--ink-navy)] font-extrabold text-xs sm:text-sm inline-flex items-center"
+                  >
+                    Llamar Ahora
+                  </a>
+                  <a
+                    href={BRAND_INFO.social.facebook}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="min-h-[44px] px-4 py-2.5 rounded-xl bg-[var(--bg-navy)] text-[var(--ink-on-navy)] hover:bg-[var(--bg-pacifico)] hover:text-[var(--ink-navy)] font-extrabold text-xs sm:text-sm inline-flex items-center transition-colors"
+                  >
+                    Facebook
+                  </a>
+                  <a
+                    href={BRAND_INFO.social.instagram}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="min-h-[44px] px-4 py-2.5 rounded-xl bg-[var(--bg-navy)] text-[var(--ink-on-navy)] hover:bg-[var(--bg-pacifico)] hover:text-[var(--ink-navy)] font-extrabold text-xs sm:text-sm inline-flex items-center transition-colors"
+                  >
+                    Instagram
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right 6 Cols: Interactive Google Maps Embed & Sister Ports -->
+          <div class="lg:col-span-6 space-y-6">
+            <div class="rounded-2xl overflow-hidden border-2 border-[var(--bg-pacifico)] bg-[var(--bg-navy-elevated)] shadow-[var(--shadow-coastal-lg)]">
+              <iframe
+                title="Mapa de ubicación de Don Ballenón Américas en Av. Las Américas 206, Aguascalientes"
+                src="https://www.google.com/maps?q=21.872281,-102.3009464&hl=es&z=16&output=embed"
+                width="100%"
+                height="340"
+                style="border:0;"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                class="w-full h-[320px] sm:h-[360px]"
+              ></iframe>
+            </div>
+
+            <!-- Sister Ports Info -->
+            <div class="rounded-2xl border border-[var(--seam-on-navy)] bg-[var(--bg-navy-elevated)] p-6 space-y-3">
+              <h3 class="text-lg font-extrabold text-[var(--bg-pacifico)]">
+                Tradición Ballenón en el Bajío
+              </h3>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-1">
+                {BRAND_INFO.sisterLocations.map((loc) => (
+                  <div class="space-y-1">
+                    <p class="text-sm font-extrabold text-[var(--ink-on-navy)]">{loc.city}</p>
+                    <p class="text-xs font-bold text-[var(--bg-pacifico)]">{loc.spot}</p>
+                    <p class="text-xs text-[var(--ink-on-navy-muted)]">{loc.note}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER REAL CLOSE -->
+  <footer class="bg-[var(--bg-sand-elevated)] text-[var(--ink-navy)] py-10 border-t-2 border-[var(--seam-strong)]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-6">
+      <div class="space-y-1">
+        <p class="font-extrabold text-lg text-[var(--ink-navy)]" style="font-family: var(--font-display);">
+          DON BALLENÓN · MARISQUERÍA Y TABERNA COSTERA
+        </p>
+        <p class="text-xs sm:text-sm text-[var(--ink-navy-muted)]">
+          {BRAND_INFO.address.full} · Tel. <a href={`tel:${BRAND_INFO.phone.raw}`} class="font-bold underline">{BRAND_INFO.phone.display}</a>
+        </p>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-3">
+        <a
+          href={BRAND_INFO.social.facebook}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="min-h-[44px] px-4 py-2.5 rounded-lg bg-[var(--bg-sand-deep)] hover:bg-[var(--bg-pacifico)] text-[var(--ink-navy)] font-bold text-xs sm:text-sm inline-flex items-center transition-colors"
+        >
+          Facebook Oficial
+        </a>
+        <a
+          href={BRAND_INFO.social.instagram}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="min-h-[44px] px-4 py-2.5 rounded-lg bg-[var(--bg-sand-deep)] hover:bg-[var(--bg-pacifico)] text-[var(--ink-navy)] font-bold text-xs sm:text-sm inline-flex items-center transition-colors"
+        >
+          Instagram ({BRAND_INFO.social.instagramHandle})
+        </a>
+        <a
+          href={BRAND_INFO.social.googleMaps}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="min-h-[44px] px-4 py-2.5 rounded-lg bg-[var(--bg-navy)] text-[var(--bg-pacifico)] font-bold text-xs sm:text-sm inline-flex items-center transition-colors"
+        >
+          Google Maps
+        </a>
+      </div>
+    </div>
+  </footer>
+</BaseLayout>

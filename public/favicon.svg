@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <rect width="64" height="64" rx="14" fill="#F5B800" stroke="#0A2342" stroke-width="3"/>
+  <circle cx="32" cy="32" r="24" fill="#FAF3E0" stroke="#0A2342" stroke-width="2.5"/>
+  <!-- Whale / Ballena icon -->
+  <path d="M16 36C16 26 24 21 34 21C42 21 47 26 49 32C51 30 54 27 55 24C55 29 53 34 49 36C51 38 52 41 52 41C47 41 44 39 42 37C39 40 33 41 25 41C19 41 16 39 16 36Z" fill="#0A2342"/>
+  <circle cx="24" cy="31" r="2" fill="#F5B800"/>
+  <!-- Water spout -->
+  <path d="M26 19C26 15 23 13 20 13M28 19C28 14 31 12 34 12" stroke="#C83E2B" stroke-width="2.5" stroke-linecap="round"/>
+  <!-- Waves -->
+  <path d="M14 45C18 43 22 47 26 45C30 43 34 47 38 45C42 43 46 47 50 45" stroke="#0E6BA8" stroke-width="2.5" stroke-linecap="round"/>
+</svg>

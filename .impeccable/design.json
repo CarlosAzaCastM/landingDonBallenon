@@ -1,0 +1,171 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-01T18:06:30-06:00",
+  "title": "Design System: Don Ballenón",
+  "extensions": {
+    "colorMeta": {
+      "pacifico-gold": {
+        "role": "primary",
+        "displayName": "Amarillo Cerveza Pacífico",
+        "canonical": "#F5B800",
+        "tonalRamp": ["#3A2A00", "#5C4300", "#856200", "#B28400", "#E0A800", "#F5B800", "#FFD24C", "#FFF3C4"]
+      },
+      "port-navy": {
+        "role": "secondary",
+        "displayName": "Azul Marino de Puerto",
+        "canonical": "#0A2342",
+        "tonalRamp": ["#051224", "#0A2342", "#12345E", "#173A66", "#2B568A", "#5682B8", "#94B8E2", "#D9E8F7"]
+      },
+      "ancla-red": {
+        "role": "tertiary",
+        "displayName": "Rojo Ancla y Salsa Brava",
+        "canonical": "#C83E2B",
+        "tonalRamp": ["#3D100A", "#631B11", "#8F2719", "#C83E2B", "#E05A47", "#EE8577", "#F7B6AD", "#FDE3DF"]
+      },
+      "sea-salt-canvas": {
+        "role": "neutral",
+        "displayName": "Blanco Sal Marina",
+        "canonical": "#F4F7FA",
+        "tonalRamp": ["#131C26", "#263647", "#435A73", "#6B85A1", "#9BB1C9", "#C8D7E6", "#E6EEF6", "#F4F7FA"]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display Cartelera",
+        "purpose": "Titular monumental del primer viewport."
+      },
+      "headline": {
+        "displayName": "Headline de Curso",
+        "purpose": "Encabezados principales de cada banda horizontal (h2)."
+      },
+      "title": {
+        "displayName": "Title de Especialidad",
+        "purpose": "Nombres de platillos, bebidas y sesiones musicales (h3)."
+      },
+      "body": {
+        "displayName": "Body Lectura",
+        "purpose": "Descripciones de platillos y reseñas con medida máxima de 60ch."
+      },
+      "label": {
+        "displayName": "Label Tabular",
+        "purpose": "Precios, coordenadas GPS, calificaciones y horarios."
+      }
+    },
+    "shadows": [
+      {
+        "name": "shadow-coastal",
+        "value": "0 12px 28px -8px rgba(0, 0, 0, 0.12)",
+        "purpose": "Elevación neutra para cartelas y tableros principales."
+      },
+      {
+        "name": "shadow-coastal-lg",
+        "value": "0 20px 38px -12px rgba(0, 0, 0, 0.18)",
+        "purpose": "Elevación pronunciada para el simulador de comanda y contenedores maestros."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-coastal-out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "Curva exponencial suave para la interacción tipográfica BlurText y el Spotlight."
+      }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" },
+      { "name": "xl", "value": "1280px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Port Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Botón principal de alto contraste en Azul Marino con leyenda en Amarillo Pacífico.",
+      "html": "<button class=\"ds-btn-primary\">Ver Carta y Armar Ronda</button>",
+      "css": ".ds-btn-primary { background: #0A2342; color: #F5B800; padding: 14px 24px; font-family: 'Be Vietnam Pro', sans-serif; font-weight: 800; font-size: 0.95rem; border: 2px solid #0A2342; border-radius: 12px; cursor: pointer; min-height: 48px; transition: background-color 0.2s ease; } .ds-btn-primary:hover { background: #12345E; } .ds-btn-primary:focus-visible { outline: 3px solid #C83E2B; outline-offset: 3px; }"
+    },
+    {
+      "name": "Pacífico Gold Action Button",
+      "kind": "button",
+      "refersTo": "button-pacifico",
+      "description": "Botón de acción rápida para agregar platillos a la ronda o abrir Google Maps.",
+      "html": "<button class=\"ds-btn-pacifico\">+ Sumar a mi ronda</button>",
+      "css": ".ds-btn-pacifico { background: #F5B800; color: #0A2342; padding: 10px 18px; font-family: 'Be Vietnam Pro', sans-serif; font-weight: 800; font-size: 0.875rem; border: 2px solid #0A2342; border-radius: 12px; cursor: pointer; min-height: 44px; transition: background-color 0.2s ease; } .ds-btn-pacifico:hover { background: #FFCC00; } .ds-btn-pacifico:focus-visible { outline: 3px solid #C83E2B; outline-offset: 3px; }"
+    },
+    {
+      "name": "Category Filter Tab",
+      "kind": "chip",
+      "refersTo": "button-pacifico",
+      "description": "Selector de categoría dentro del tablero interactivo de cocina y barra.",
+      "html": "<div class=\"ds-tablist\"><button class=\"ds-tab ds-tab-active\">Toda la Carta <span class=\"ds-tab-count\">9 especialidades</span></button><button class=\"ds-tab\">Pa’ Chopear</button></div>",
+      "css": ".ds-tablist { display: inline-flex; gap: 10px; padding: 10px; background: #0A2342; border-radius: 16px; border: 2px solid #0A2342; } .ds-tab { min-height: 44px; padding: 8px 16px; border-radius: 12px; font-weight: 700; font-size: 0.875rem; background: transparent; color: #F4F7FA; border: none; cursor: pointer; display: inline-flex; align-items: center; gap: 8px; } .ds-tab-active { background: #F5B800; color: #0A2342; } .ds-tab-count { background: #0A2342; color: #F5B800; padding: 2px 8px; border-radius: 6px; font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; }"
+    },
+    {
+      "name": "Coastal Ledger Row",
+      "kind": "card",
+      "refersTo": "card-cartela",
+      "description": "Fila de especialidad gastronómica con precio tabular, notas de picor y maridaje.",
+      "html": "<article class=\"ds-ledger-row\"><div class=\"ds-row-top\"><h3>Doraditos de Marlín \"Pa’ Chopear\"</h3><span class=\"ds-price\">$145 MXN</span></div><p>Dos planchitas bien doradas rellenas de marlín ahumado con su caldito caliente de camarón.</p></article>",
+      "css": ".ds-ledger-row { background: #FFFFFF; color: #0A2342; padding: 24px; border: 2px solid #0A2342; border-radius: 16px; max-width: 640px; } .ds-row-top { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; } .ds-row-top h3 { margin: 0; font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.35rem; font-weight: 800; } .ds-price { font-family: 'JetBrains Mono', monospace; font-weight: 800; background: #F5B800; color: #0A2342; padding: 4px 12px; border-radius: 8px; } .ds-ledger-row p { margin: 10px 0 0; color: #173A66; line-height: 1.6; max-width: 58ch; }"
+    },
+    {
+      "name": "Coastal Dispatch Navigation",
+      "kind": "nav",
+      "refersTo": "card-cartela",
+      "description": "Barra de navegación costera con costura inferior de 2px y acceso directo a Google Maps.",
+      "html": "<nav class=\"ds-nav\"><span class=\"ds-brand\">DON BALLENÓN</span><div class=\"ds-links\"><a href=\"#carta\">Carta & Comanda</a><a href=\"#musica\">Música en Vivo</a></div></nav>",
+      "css": ".ds-nav { display: flex; align-items: center; justify-content: space-between; padding: 14px 24px; background: #FFFFFF; border-bottom: 2px solid #0A2342; } .ds-brand { font-family: 'Bricolage Grotesque', sans-serif; font-weight: 800; font-size: 1.25rem; color: #0A2342; } .ds-links { display: flex; gap: 8px; } .ds-links a { color: #0A2342; text-decoration: none; font-weight: 700; padding: 10px 14px; border-radius: 8px; } .ds-links a:hover { background: #F5B800; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "Despacho Costero y Cartelera de Cervecería Al Fresco",
+    "overview": "El sistema visual de Don Ballenón captura la energía luminosa de una terraza de mariscos a mediodía acompañada de una Cerveza Pacífico en formato Ballena servida al punto de nieve. En lugar de recurrir a plantillas oscuras de restaurante genérico o cuadrículas de tarjetas flotantes idénticas, la interfaz se estructura como un tablero de despacho portuario dividido en bandas horizontales francas con costuras visibles (2px solid #0A2342).",
+    "keyCharacteristics": [
+      "Bandas horizontales continuas separadas por costuras estructurales de 2px solid #0A2342 que organizan la narrativa por tiempos.",
+      "Jerarquía por inversión cromática directa entre campos bañados en Amarillo Pacífico y paneles de mando en Azul Marino Profundo.",
+      "Tipografía expresiva de cartelera (Bricolage Grotesque) combinada con precisión tabular (JetBrains Mono) para precios, horarios y coordenadas GPS.",
+      "Interactividad estática de alto valor (React Bits BlurText y Spotlight Ledger) que mantiene el contenido 100% visible desde el primer renderizado SSR."
+    ],
+    "rules": [
+      {
+        "name": "The Navy-on-Gold Rule",
+        "body": "Jamás coloques texto blanco sobre Amarillo Pacífico (#F5B800); toda tipografía o iconografía sobre superficie amarilla utiliza exclusivamente Azul Marino de Puerto (#0A2342) o Azul Marino Atenuado (#173A66).",
+        "section": "colors"
+      },
+      {
+        "name": "The Zero-Gray Rule",
+        "body": "Queda prohibido el uso de escalas de gris neutras (#666, slate, zinc); todo texto secundario o borde sutil se tiñe con el matiz azul marino del puerto.",
+        "section": "colors"
+      },
+      {
+        "name": "The No-Kicker Rule",
+        "body": "Ningún encabezado (h1, h2, h3) lleva una etiqueta pequeña ('eyebrow' o 'kicker') encima; el titular abre directamente el bloque con su propio peso visual.",
+        "section": "typography"
+      },
+      {
+        "name": "The 60ch Measure Rule",
+        "body": "Todo párrafo descriptivo y cita de reseña se restringe a un máximo de 60ch con text-wrap: pretty para impedir líneas de más de 80 caracteres o palabras huérfanas al final del bloque.",
+        "section": "typography"
+      },
+      {
+        "name": "The Neutral Shadow Rule",
+        "body": "Toda sombra proyectada usa exclusivamente negro translúcido neutro (rgba(0, 0, 0, 0.12)), nunca sombras coloreadas sobre fondos oscuros.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do usar Amarillo Cerveza Pacífico (#F5B800) como campo cromático dominante en secciones clave con texto en Azul Marino (#0A2342).",
+      "Do garantizar objetivos táctiles de al menos 44x44px en todos los botones, filtros y controles de cantidad.",
+      "Do aplicar font-variant-numeric: tabular-nums en todos los precios, horarios, calificaciones y coordenadas GPS.",
+      "Do dividir el contenido interno de los paneles mediante líneas de costura (divide-y, border-b) en vez de anidar tarjetas."
+    ],
+    "donts": [
+      "Don't colocar eyebrows o kickers por encima de los encabezados (h1, h2, h3).",
+      "Don't anidar tarjetas con borde dentro de otras tarjetas con borde (nested-cards).",
+      "Don't usar carruseles o marquees de desplazamiento infinito automático que oculten información o distraigan la lectura.",
+      "Don't usar grises neutros ni fondos crema/beige por defecto (#FAF3E0)."
+    ]
+  }
+}

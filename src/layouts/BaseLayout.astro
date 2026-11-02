@@ -1,0 +1,145 @@
+---
+import '../styles/global.css';
+import { BRAND_INFO, MENU_ITEMS } from '../data/donBallenon';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = 'Don Ballenón Américas | Marisquería Al Fresco, Ballena Pacífico y Coquita Batanga en Aguascalientes',
+  description = BRAND_INFO.description,
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'https://donballenon.com');
+
+const schemaOrgJSONLD = {
+  '@context': 'https://schema.org',
+  '@type': ['Restaurant', 'BarOrPub'],
+  '@id': 'https://donballenon.com/#restaurant',
+  name: BRAND_INFO.branchName,
+  alternateName: BRAND_INFO.name,
+  description: BRAND_INFO.description,
+  url: 'https://donballenon.com',
+  telephone: BRAND_INFO.phone.raw,
+  priceRange: '$$',
+  servesCuisine: ['Mariscos estilo Pacífico', 'Cocina Costera Mexicana', 'Ceviches y Aguachiles', 'Coctelería y Cervecería'],
+  acceptsReservations: 'True',
+  hasMap: BRAND_INFO.social.googleMaps,
+  image: [
+    'https://donballenon.com/images/aguachile-puerto.jpg',
+    'https://donballenon.com/images/tacos-doraditos.jpg',
+    'https://donballenon.com/images/cerveza-helada.jpg',
+  ],
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: BRAND_INFO.address.street,
+    addressLocality: BRAND_INFO.address.city,
+    addressRegion: BRAND_INFO.address.state,
+    postalCode: BRAND_INFO.address.postalCode,
+    addressCountry: BRAND_INFO.address.country,
+  },
+  geo: {
+    '@type': 'GeoCoordinates',
+    latitude: BRAND_INFO.coordinates.lat,
+    longitude: BRAND_INFO.coordinates.lng,
+  },
+  aggregateRating: {
+    '@type': 'AggregateRating',
+    ratingValue: BRAND_INFO.rating.score,
+    bestRating: '5',
+    ratingCount: '3840',
+  },
+  openingHoursSpecification: [
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+      opens: '12:00',
+      closes: '01:00',
+    },
+    {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: ['Sunday'],
+      opens: '12:00',
+      closes: '00:00',
+    },
+  ],
+  sameAs: [BRAND_INFO.social.facebook, BRAND_INFO.social.instagram, BRAND_INFO.social.googleMaps],
+  hasMenu: {
+    '@type': 'Menu',
+    name: 'Carta del Puerto Don Ballenón',
+    hasMenuSection: [
+      {
+        '@type': 'MenuSection',
+        name: 'Especialidades de Puerto y Barra',
+        hasMenuItem: MENU_ITEMS.map((item) => ({
+          '@type': 'MenuItem',
+          name: item.name,
+          description: item.description,
+          offers: {
+            '@type': 'Offer',
+            price: item.price.replace(/[^0-9]/g, ''),
+            priceCurrency: 'MXN',
+          },
+        })),
+      },
+    ],
+  },
+};
+---
+
+<!doctype html>
+<html lang="es-MX">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- Local SEO & Geo Meta Tags (Aguascalientes, México) -->
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <meta name="geo.region" content="MX-AGU" />
+    <meta name="geo.placename" content="Aguascalientes, Aguascalientes" />
+    <meta name="geo.position" content={`${BRAND_INFO.coordinates.lat};${BRAND_INFO.coordinates.lng}`} />
+    <meta name="ICBM" content={`${BRAND_INFO.coordinates.lat}, ${BRAND_INFO.coordinates.lng}`} />
+    <meta name="theme-color" content="#F5B800" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="restaurant.restaurant" />
+    <meta property="og:locale" content="es_MX" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://donballenon.com/images/aguachile-puerto.jpg" />
+    <meta property="og:site_name" content="Don Ballenón" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://donballenon.com/images/aguachile-puerto.jpg" />
+
+    <!-- Typography: Bricolage Grotesque (Display), Be Vietnam Pro (Body), JetBrains Mono (Tabular Data) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,700;12..96,800&family=JetBrains+Mono:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- JSON-LD Structured Data for Local SEO -->
+    <script type="application/ld+json" set:html={JSON.stringify(schemaOrgJSONLD)} />
+  </head>
+  <body class="min-h-screen flex flex-col selection:bg-[var(--bg-pacifico)] selection:text-[var(--ink-navy)]">
+    <a
+      href="#contenido-principal"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-5 focus:py-3 focus:rounded-xl focus:bg-[var(--bg-navy)] focus:text-[var(--bg-pacifico)] focus:font-extrabold focus:border-2 focus:border-[var(--bg-pacifico)]"
+    >
+      Saltar al contenido principal
+    </a>
+    <slot />
+  </body>
+</html>
